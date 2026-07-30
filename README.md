@@ -29,8 +29,8 @@
 
 1. 克隆本项目：
    ```bash
-   git clone https://github.com/connectedGraph/codex-pet-webp-demo.git
-   cd codex-pet-webp-demo
+   git clone https://github.com/connectedGraph/codex-pet-electron.git
+   cd codex-pet-electron
    ```
 2. 安装依赖：
    ```bash
@@ -91,8 +91,8 @@ A study and development demo for desktop floating pets based on **Node.js + Elec
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/connectedGraph/codex-pet-webp-demo.git
-   cd codex-pet-webp-demo
+   git clone https://github.com/connectedGraph/codex-pet-electron.git
+   cd codex-pet-electron
    ```
 2. Install dependencies:
    ```bash
