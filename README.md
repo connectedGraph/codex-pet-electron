@@ -16,7 +16,7 @@
 
 ### 项目预览
 
-![Project Preview](assets/preview.jpg)
+![Project Preview](assets/preview.png)
 
 ### 快速开始
 
@@ -78,7 +78,7 @@ A study and development demo for desktop floating pets based on **Node.js + Elec
 
 ### Project Preview
 
-![Project Preview](assets/preview.jpg)
+![Project Preview](assets/preview.png)
 
 ### Quick Start
 
