@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Codex Pet Lab</title>
+    <link rel="stylesheet" href="control.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">LOCAL ELECTRON STUDY BUILD</p>
+          <h1>Codex Pet Lab</h1>
+        </div>
+        <div class="topbar-actions">
+          <span class="runtime-status"><span></span>本地运行</span>
+          <button class="quiet-button" id="quitButton" type="button">退出</button>
+        </div>
+      </header>
+
+      <section class="workspace" aria-label="Pet animation workspace">
+        <div class="preview-column">
+          <div class="section-heading">
+            <div>
+              <p class="section-index">01</p>
+              <h2>动画预览</h2>
+            </div>
+            <p>单张 WebP，通过 CSS background-position 切换帧。</p>
+          </div>
+
+          <button
+            class="preview-stage"
+            id="previewStage"
+            type="button"
+            aria-label="播放或暂停当前动画"
+          >
+            <span class="stage-grid" aria-hidden="true"></span>
+            <span class="preview-pet pet-sprite" id="previewPet"></span>
+            <span class="stage-caption">
+              <span id="previewStateLabel">待机</span>
+              <span id="frameReadout">ROW 0 · FRAME 1/6</span>
+            </span>
+          </button>
+
+          <div class="transport">
+            <button class="primary-button" id="pauseButton" type="button">
+              暂停播放
+            </button>
+            <button class="secondary-button" id="atlasButton" type="button">
+              查看完整 WebP
+            </button>
+            <button class="secondary-button" id="visibilityButton" type="button">
+              隐藏悬浮宠物
+            </button>
+            <button class="secondary-button" id="resetButton" type="button">
+              重置位置
+            </button>
+          </div>
+        </div>
+
+        <aside class="control-column">
+          <div class="section-heading compact">
+            <div>
+              <p class="section-index">02</p>
+              <h2>状态模拟</h2>
+            </div>
+          </div>
+
+          <div class="state-list" id="stateList">
+            <button type="button" data-state="idle">
+              <span>待机</span><small>ROW 0</small>
+            </button>
+            <button type="button" data-state="running-right">
+              <span>向右跑</span><small>ROW 1</small>
+            </button>
+            <button type="button" data-state="running-left">
+              <span>向左跑</span><small>ROW 2</small>
+            </button>
+            <button type="button" data-state="waving">
+              <span>挥手</span><small>ROW 3</small>
+            </button>
+            <button type="button" data-state="jumping">
+              <span>跳跃</span><small>ROW 4</small>
+            </button>
+            <button type="button" data-state="failed">
+              <span>失败</span><small>ROW 5</small>
+            </button>
+            <button type="button" data-state="waiting">
+              <span>等待</span><small>ROW 6</small>
+            </button>
+            <button type="button" data-state="running">
+              <span>工作中</span><small>ROW 7</small>
+            </button>
+            <button type="button" data-state="review">
+              <span>审查</span><small>ROW 8</small>
+            </button>
+          </div>
+
+          <div class="implementation-note">
+            <p class="section-index">03</p>
+            <h2>悬浮窗状态</h2>
+            <dl>
+              <div><dt>窗口</dt><dd>transparent BrowserWindow</dd></div>
+              <div><dt>拖动</dt><dd>Pointer Events → IPC</dd></div>
+              <div><dt>移动</dt><dd>setPosition()</dd></div>
+              <div><dt>穿透</dt><dd>setIgnoreMouseEvents()</dd></div>
+            </dl>
+            <p class="event-line" id="eventLine">已加载 猫羽雫 (Shizuku) 精灵图。</p>
+          </div>
+        </aside>
+      </section>
+
+      <footer class="asset-strip">
+        <div>
+          <p class="asset-name">assets/codex-spritesheet.webp</p>
+          <p>1536 × 2288 · RGBA WebP · 8 × 11 cells · 192 × 208 per cell</p>
+        </div>
+        <p class="asset-warning">素材由作者开源提供，基于 MIT 许可授权使用。</p>
+      </footer>
+    </main>
+
+    <dialog class="atlas-dialog" id="atlasDialog">
+      <div class="atlas-header">
+        <div>
+          <p class="eyebrow">RAW SPRITE ATLAS</p>
+          <h2>猫羽雫 (Shizuku) 精灵图</h2>
+        </div>
+        <button class="quiet-button" id="closeAtlasButton" type="button">关闭</button>
+      </div>
+      <div class="atlas-viewport">
+        <img
+          id="atlasImage"
+          src="assets/codex-spritesheet.webp"
+          alt="Codex 默认 Pet 的 8 列 11 行 WebP 精灵图"
+        />
+      </div>
+      <div class="atlas-controls">
+        <label for="zoomRange">缩放</label>
+        <input id="zoomRange" type="range" min="20" max="100" value="38" />
+        <output id="zoomOutput">38%</output>
+      </div>
+    </dialog>
+
+    <script src="sprite-player.js"></script>
+    <script src="control.js"></script>
+  </body>
+</html>

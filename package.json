@@ -1,0 +1,14 @@
+{
+  "name": "codex-pet-webp-demo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A local Electron study demo for a draggable WebP sprite pet.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "check": "node scripts/check-project.mjs"
+  },
+  "devDependencies": {
+    "electron": "42.3.0"
+  }
+}
